@@ -1,0 +1,10 @@
+Options +SymlinksIfOwnerMatch
+#IndexIgnore */*
+RewriteEngine on
+#RewriteBase /
+
+# https://stackoverflow.com/a/6656450/15503548
+# enable QSA
+RewriteRule ^api/(.*)/(.*)/(.*) server.php?module=$1&action=$2&id=$3 [QSA,L]
+RewriteRule ^api/(.*)/(.*) server.php?module=$1&action=$2 [QSA,L]
+RewriteRule ^api/(.*) server.php?module=$1&action=index [QSA,L]
